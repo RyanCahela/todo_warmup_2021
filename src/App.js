@@ -3,7 +3,6 @@ import Header from "components/Header/Header";
 import Footer from "components/Footer/Footer";
 import CreateTodo from "components/CreateTodo/CreateTodo";
 import TodoList from "components/TodoList/TodoList";
-import { Route, Switch } from "react-router-dom";
 
 function App() {
   const [todos, setTodos] = useState([]);

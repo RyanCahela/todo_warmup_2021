@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+const StyleWrapper = styled.div`
+  position: absolute;
+  top: 60px;
+`;
+
 const ArrowIcon = styled.span`
   //TODO: make this look better
   display: inline-block;
@@ -29,7 +34,7 @@ function ArrowToggle(props) {
         </ArrowIcon>
         {label ?? "noLabel"}
       </h3>
-      {isOpen ? <Component /> : null}
+      <StyleWrapper>{isOpen ? <Component /> : null}</StyleWrapper>
     </>
   );
 }

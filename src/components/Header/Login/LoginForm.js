@@ -5,6 +5,9 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background-color: white;
+  border: 1px solid #212121;
+  padding: 10px;
 `;
 
 function LoginForm() {
