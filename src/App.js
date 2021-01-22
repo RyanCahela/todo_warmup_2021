@@ -3,10 +3,18 @@ import Header from "components/Header/Header";
 import Footer from "components/Footer/Footer";
 import CreateTodo from "components/CreateTodo/CreateTodo";
 import TodoList from "components/TodoList/TodoList";
+import firebase from "services/firebase";
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [user, setUser] = useState({});
   const localStorageLabel = "todos";
+
+  firebase.auth().onAuthStateChanged((user) => {
+    setUser(user);
+  });
+
+  console.log("user", user);
 
   //on todos change
   useEffect(() => {
@@ -47,7 +55,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header user={user} />
       <CreateTodo addTodo={addTodo} />
       <TodoList todos={todos} />
       <Footer />

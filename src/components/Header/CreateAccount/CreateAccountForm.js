@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import firebase from "services/firebase";
 
 const Form = styled.form`
   display: flex;
@@ -22,12 +23,8 @@ function CreateAccountForm() {
     if (password !== confirmPassword) {
       setErrorMessage("passwords do not match");
     }
+    firebase.auth().createUserWithEmailAndPassword(email, password);
 
-    console.dir({
-      email,
-      password,
-      confirmPassword,
-    });
     setEmail("");
     setPassword("");
     setConfirmPassword("");

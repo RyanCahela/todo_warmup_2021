@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import firebase from "services/firebase";
 
 const Form = styled.form`
   display: flex;
@@ -10,13 +11,15 @@ const Form = styled.form`
   padding: 10px;
 `;
 
-function LoginForm() {
+function LoginForm(props) {
+  const { toggleIsOpen } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("sumit");
+    firebase.auth().signInWithEmailAndPassword(email, password);
+    toggleIsOpen();
     setEmail("");
     setPassword("");
   }

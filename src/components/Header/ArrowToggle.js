@@ -22,19 +22,21 @@ function ArrowToggle(props) {
   const rightArrow = "→";
   const downArrow = "↓";
 
-  function handleToggleOpen() {
+  function toggleIsOpen() {
     setIsOpen(!isOpen);
   }
 
   return (
     <>
       <h3>
-        <ArrowIcon onClick={handleToggleOpen}>
+        <ArrowIcon onClick={toggleIsOpen}>
           {isOpen ? downArrow : rightArrow}
         </ArrowIcon>
         {label ?? "noLabel"}
       </h3>
-      <StyleWrapper>{isOpen ? <Component /> : null}</StyleWrapper>
+      <StyleWrapper>
+        {isOpen ? <Component toggleIsOpen={toggleIsOpen} /> : null}
+      </StyleWrapper>
     </>
   );
 }
